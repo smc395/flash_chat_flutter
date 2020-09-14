@@ -22,6 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      // ModalProgressHUD fluttter package to handle waiting for login to complete
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Padding(
@@ -31,6 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Flexible(
+                // Hero, animation widget allows to expand to a certain height
                 child: Hero(
                   tag: 'logo',
                   child: Container(
@@ -42,6 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 48.0,
               ),
+              // Email text field for login
               TextField(
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
@@ -52,9 +55,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 decoration:
                     kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
               ),
+              // Spacer
               SizedBox(
                 height: 8.0,
               ),
+              // Password text field for login
               TextField(
                 obscureText: true,
                 textAlign: TextAlign.center,
@@ -65,9 +70,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 decoration: kTextFieldDecoration.copyWith(
                     hintText: 'Enter your password'),
               ),
+              // Spacer
               SizedBox(
                 height: 24.0,
               ),
+              // Login Button
               RoundedButton(
                   buttonColor: Colors.lightBlueAccent,
                   title: 'Log In',

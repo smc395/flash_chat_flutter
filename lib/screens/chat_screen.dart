@@ -16,7 +16,8 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final _auth = FirebaseAuth.instance;
-  final messageTextController = TextEditingController();
+  final messageTextController =
+      TextEditingController(); // controller used to handle text-field
   String messageText;
 
   @override
@@ -57,13 +58,15 @@ class _ChatScreenState extends State<ChatScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            // ListView with messages
             MessageStream(),
-            // Send button and area to enter message
+            // Container with send button and area to enter message
             Container(
               decoration: kMessageContainerDecoration,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
+                  // Text field for the message
                   Expanded(
                     child: TextField(
                       controller: messageTextController,
@@ -74,6 +77,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       decoration: kMessageTextFieldDecoration,
                     ),
                   ),
+                  // Send Button
                   FlatButton(
                     onPressed: () {
                       messageTextController.clear();
@@ -103,9 +107,12 @@ class MessageStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
+      // where is the data going to come from
       stream:
           _firestore.collection('messages').orderBy('time_stamp').snapshots(),
+      // what will return for each data that enters the stream
       builder: (context, snapshot) {
+        // show a progress indicator when grabbing the snapshots from the stream
         if (!snapshot.hasData) {
           return Center(
             child: CircularProgressIndicator(
@@ -113,7 +120,10 @@ class MessageStream extends StatelessWidget {
             ),
           );
         }
+        // return the snapshots in newest to oldest order
         final messages = snapshot.data.docs.reversed;
+
+        // for each message in the stream, create a stylized message bubble
         List<MessageBubble> messageBubbles = [];
         for (var message in messages) {
           final messageText = message.data()['msg_txt'];

@@ -18,6 +18,7 @@ const kMessageContainerDecoration = BoxDecoration(
   ),
 );
 
+// Decorator for the text field to login or register
 const kTextFieldDecoration = InputDecoration(
   hintStyle: TextStyle(
     color: Colors.grey,

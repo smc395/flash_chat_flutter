@@ -22,6 +22,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      // ModalProgressHUD fluttter package to handle waiting for registration to complete
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Padding(
@@ -31,6 +32,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Flexible(
+                // Hero, animation widget allows to expand to a certain height
                 child: Hero(
                   tag: 'logo',
                   child: Container(
@@ -39,6 +41,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ),
                 ),
               ),
+              // Spacer
               SizedBox(
                 height: 48.0,
               ),

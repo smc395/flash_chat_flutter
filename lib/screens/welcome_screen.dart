@@ -24,6 +24,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           children: <Widget>[
             Row(
               children: <Widget>[
+                // Hero, animation widget allows to expand to a certain height
                 Hero(
                   tag: 'logo',
                   child: Container(
@@ -31,6 +32,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     height: 60.0,
                   ),
                 ),
+                // TypewriterAnimatedTextKit, flutter package to animate the welcome screen text
                 TypewriterAnimatedTextKit(
                   speed: Duration(seconds: 1),
                   totalRepeatCount: 1,
@@ -42,15 +44,18 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ),
               ],
             ),
+            // Spacer
             SizedBox(
               height: 48.0,
             ),
+            // Log in button
             RoundedButton(
                 buttonColor: Colors.lightBlueAccent,
                 title: 'Log In',
                 onPressed: () {
                   Navigator.pushNamed(context, LoginScreen.id);
                 }),
+            // Register button
             RoundedButton(
                 buttonColor: Colors.blueAccent,
                 title: 'Register',
